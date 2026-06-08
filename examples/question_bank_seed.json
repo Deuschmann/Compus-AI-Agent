@@ -1,0 +1,356 @@
+{
+  "questions": [
+    {
+      "id": "q_fdr_mc_001",
+      "question_type": "multiple_choice",
+      "module": "多重检验校正",
+      "topic": "FDR 与 FWER",
+      "difficulty": "easy",
+      "scope": "both",
+      "use_cases": ["lesson", "practice", "midterm"],
+      "points": 5,
+      "prompt": "在大规模基因表达差异分析中，如果目标是控制发现列表中的假阳性比例，最合适关注的是哪一个指标？",
+      "choices": ["A. FWER", "B. FDR", "C. 标准差", "D. 样本均值"],
+      "correct_answer": "B",
+      "explanation": "FDR 控制被判为显著的一组发现中假阳性的期望比例，更适合探索性的大规模检验。"
+    },
+    {
+      "id": "q_fdr_short_001",
+      "question_type": "short_answer",
+      "module": "多重检验校正",
+      "topic": "调整后 p 值解释",
+      "difficulty": "medium",
+      "scope": "both",
+      "use_cases": ["lesson", "practice", "final"],
+      "points": 10,
+      "prompt": "请解释为什么不能在 1000 个基因检验中只看原始 p < 0.05，并说明调整后 p 值的含义。",
+      "answer_keywords": ["多重检验", "假阳性", "FDR", "调整后 p 值", "显著性"],
+      "rubric": [
+        {
+          "label": "指出多重检验会增加假阳性",
+          "points": 4,
+          "keyword_groups": [
+            ["多重检验", "很多检验", "多次检验", "1000 个基因"],
+            ["假阳性", "误报", "偶然显著", "碰巧显著"]
+          ]
+        },
+        {
+          "label": "说明需要控制错误率",
+          "points": 3,
+          "keyword_groups": [
+            ["FDR", "错误发现率", "假发现率"],
+            ["FWER", "家族错误率", "整体错误率", "错误率"]
+          ]
+        },
+        {
+          "label": "能解释调整后 p 值用于校正后的显著性判断",
+          "points": 3,
+          "keyword_groups": [
+            ["调整后 p 值", "校正后的 p 值", "修正后的 p 值", "adjusted p"],
+            ["显著性", "是否显著", "判断显著", "还算不算显著"]
+          ]
+        }
+      ],
+      "explanation": "核心是说明检验次数越多，偶然显著越常见，因此需要用 FDR/FWER 等方法校正原始 p 值。"
+    },
+    {
+      "id": "q_fdr_calc_001",
+      "question_type": "calculation",
+      "module": "多重检验校正",
+      "topic": "Benjamini-Hochberg",
+      "difficulty": "medium",
+      "scope": "both",
+      "use_cases": ["practice", "midterm"],
+      "points": 10,
+      "prompt": "共有 m=100 个假设检验。某个排序第 i=5 的 p 值为 0.002。按 BH 方法的 p*m/i 近似计算，该基因的调整后 p 值是多少？",
+      "correct_answer": "0.04",
+      "tolerance": 0.001,
+      "explanation": "0.002 * 100 / 5 = 0.04。"
+    },
+    {
+      "id": "q_design_mc_001",
+      "question_type": "multiple_choice",
+      "module": "研究设计与 t 检验",
+      "topic": "配对设计",
+      "difficulty": "easy",
+      "scope": "both",
+      "use_cases": ["lesson", "practice", "midterm"],
+      "points": 5,
+      "prompt": "同一批受试者在治疗前后各测量一次血压，比较治疗前后是否有差异，优先考虑哪种检验？",
+      "choices": ["A. 独立样本 t 检验", "B. 配对 t 检验", "C. 卡方检验", "D. 单因素方差分析"],
+      "correct_answer": "B",
+      "explanation": "同一对象前后测量构成配对数据，应先分析个体内差值。"
+    },
+    {
+      "id": "q_design_short_001",
+      "question_type": "short_answer",
+      "module": "研究设计与 t 检验",
+      "topic": "配对与独立样本区分",
+      "difficulty": "medium",
+      "scope": "both",
+      "use_cases": ["lesson", "practice", "final"],
+      "points": 10,
+      "prompt": "请说明配对 t 检验和独立样本 t 检验在研究设计上的核心区别。",
+      "answer_keywords": ["同一受试者", "前后测量", "两组独立", "差值", "相关性"],
+      "rubric": [
+        {
+          "label": "说明配对设计来自同一对象或匹配对象",
+          "points": 4,
+          "keyword_groups": [
+            ["同一受试者", "同一个人", "同一对象", "同一批人"],
+            ["匹配", "配对", "前后测量", "治疗前后"]
+          ]
+        },
+        {
+          "label": "说明独立样本来自互不相关的两组",
+          "points": 3,
+          "keyword_groups": [
+            ["两组独立", "互不相关", "不是同一批人", "不同个体"],
+            ["独立样本", "独立"]
+          ]
+        },
+        {
+          "label": "指出配对检验关注差值",
+          "points": 3,
+          "keyword_groups": [
+            ["差值", "前后差", "变化量"],
+            ["个体内", "自身前后", "相关性"]
+          ]
+        }
+      ],
+      "explanation": "配对 t 检验利用同一对象或匹配对象之间的差值，独立样本 t 检验比较两组互相独立个体。"
+    },
+    {
+      "id": "q_design_calc_001",
+      "question_type": "calculation",
+      "module": "研究设计与 t 检验",
+      "topic": "均值差",
+      "difficulty": "easy",
+      "scope": "student",
+      "use_cases": ["practice"],
+      "points": 5,
+      "prompt": "某受试者治疗前收缩压为 142，治疗后为 134。若定义差值为治疗前减治疗后，该受试者差值是多少？",
+      "correct_answer": "8",
+      "tolerance": 0,
+      "explanation": "142 - 134 = 8。"
+    },
+    {
+      "id": "q_logistic_mc_001",
+      "question_type": "multiple_choice",
+      "module": "Logistic 回归",
+      "topic": "OR 解释",
+      "difficulty": "easy",
+      "scope": "both",
+      "use_cases": ["lesson", "practice", "midterm"],
+      "points": 5,
+      "prompt": "在 Logistic 回归中，OR=1.8 最恰当的解释是：",
+      "choices": ["A. 概率增加 1.8 倍", "B. 比值为参照组的 1.8 倍", "C. 均值增加 1.8", "D. 风险一定增加 80%"],
+      "correct_answer": "B",
+      "explanation": "OR 描述 odds 的比值，不等同于概率或风险。"
+    },
+    {
+      "id": "q_logistic_short_001",
+      "question_type": "short_answer",
+      "module": "Logistic 回归",
+      "topic": "OR 与置信区间",
+      "difficulty": "medium",
+      "scope": "both",
+      "use_cases": ["lesson", "practice", "final"],
+      "points": 10,
+      "prompt": "某暴露因素的 OR=1.45，95% CI 为 [1.10, 1.91]。请解释统计意义和实际意义，并说明不能过度解释的地方。",
+      "answer_keywords": ["比值", "置信区间", "1", "统计显著", "因果"],
+      "rubric": [
+        {
+          "label": "正确说明 OR 表示比值而非概率",
+          "points": 3,
+          "keyword_groups": [
+            ["比值", "odds", "发生比"],
+            ["不是概率", "不等于概率", "不能说成概率"]
+          ]
+        },
+        {
+          "label": "根据置信区间不包含 1 判断统计显著",
+          "points": 3,
+          "keyword_groups": [
+            ["置信区间", "95% CI", "CI"],
+            ["不包含 1", "没有跨过 1", "不跨 1"],
+            ["统计显著", "有统计学意义", "显著"]
+          ]
+        },
+        {
+          "label": "指出观察性结果不能直接推出因果",
+          "points": 2,
+          "keyword_groups": [
+            ["因果", "导致", "造成"],
+            ["混杂", "调整变量", "不能直接", "不能证明"]
+          ]
+        },
+        {
+          "label": "能描述方向和效应大小",
+          "points": 2,
+          "keyword_groups": [
+            ["增加", "升高", "更高", "正相关"],
+            ["1.45", "45%", "效应大小"]
+          ]
+        }
+      ],
+      "explanation": "OR 大于 1 且置信区间不跨 1，提示暴露与结局 odds 升高相关，但仍需注意混杂和因果限制。"
+    },
+    {
+      "id": "q_logistic_code_001",
+      "question_type": "code",
+      "module": "Logistic 回归",
+      "topic": "Python 建模",
+      "difficulty": "hard",
+      "scope": "student",
+      "use_cases": ["practice"],
+      "points": 15,
+      "prompt": "用 Python 写出使用 statsmodels 对二分类结局 y 和解释变量 age、sex、exposure 拟合 Logistic 回归的核心代码。假设数据框名为 df。",
+      "answer_keywords": ["statsmodels", "Logit", "add_constant", "fit", "y", "age", "sex", "exposure"],
+      "rubric": [
+        {"label": "能构造解释变量并加入截距", "points": 4, "keywords": ["add_constant", "age", "sex", "exposure"]},
+        {"label": "使用 Logistic 回归模型", "points": 5, "keywords": ["Logit", "logit"]},
+        {"label": "调用拟合并保存结果", "points": 3, "keywords": ["fit", "result", "model"]},
+        {"label": "代码结构能对应 y 和 df", "points": 3, "keywords": ["df", "y"]}
+      ],
+      "explanation": "评分关注是否正确选择 Logistic 模型、是否包含自变量和截距、是否完成 fit。"
+    },
+    {
+      "id": "q_logistic_code_r_001",
+      "question_type": "code",
+      "module": "Logistic 回归",
+      "topic": "R 语言建模",
+      "difficulty": "hard",
+      "scope": "student",
+      "use_cases": ["practice"],
+      "points": 15,
+      "prompt": "用 R 语言写出对二分类结局 y 和解释变量 age、sex、exposure 拟合 Logistic 回归的核心代码。假设数据框名为 df。",
+      "answer_keywords": ["glm", "family", "binomial", "data", "df", "y", "age", "sex", "exposure"],
+      "rubric": [
+        {
+          "label": "使用 R 的 Logistic 回归建模函数",
+          "points": 5,
+          "keyword_groups": [
+            ["glm"],
+            ["binomial", "family = binomial", "family=binomial"]
+          ]
+        },
+        {
+          "label": "公式中包含结局和解释变量",
+          "points": 5,
+          "keyword_groups": [
+            ["y ~", "y~"],
+            ["age"],
+            ["sex"],
+            ["exposure"]
+          ]
+        },
+        {
+          "label": "指定数据框并保存模型结果",
+          "points": 3,
+          "keyword_groups": [
+            ["data = df", "data=df"],
+            ["model", "fit", "<-"]
+          ]
+        },
+        {
+          "label": "能输出或查看模型结果",
+          "points": 2,
+          "keyword_groups": [
+            ["summary", "confint", "exp"]
+          ]
+        }
+      ],
+      "explanation": "R 中常见写法是 glm(y ~ age + sex + exposure, data = df, family = binomial)，再用 summary 或 exp(coef(...)) 查看结果。"
+    },
+    {
+      "id": "q_chisq_mc_001",
+      "question_type": "multiple_choice",
+      "module": "卡方检验",
+      "topic": "适用场景",
+      "difficulty": "easy",
+      "scope": "both",
+      "use_cases": ["practice", "final"],
+      "points": 5,
+      "prompt": "研究性别与是否患病两个分类变量是否有关联，通常优先考虑：",
+      "choices": ["A. 卡方检验", "B. 配对 t 检验", "C. 线性回归", "D. Wilcoxon 符号秩检验"],
+      "correct_answer": "A",
+      "explanation": "两个分类变量之间的关联通常可用列联表卡方检验。"
+    },
+    {
+      "id": "q_genetics_short_001",
+      "question_type": "short_answer",
+      "module": "遗传学统计",
+      "topic": "基因型频率",
+      "difficulty": "medium",
+      "scope": "student",
+      "use_cases": ["practice"],
+      "points": 10,
+      "prompt": "请说明基因型频率和等位基因频率的区别，并举一个简单例子。",
+      "answer_keywords": ["基因型", "等位基因", "AA", "Aa", "aa", "频率"],
+      "rubric": [
+        {"label": "区分基因型组合与单个等位基因", "points": 5, "keywords": ["基因型", "等位基因"]},
+        {"label": "给出 AA/Aa/aa 或类似例子", "points": 3, "keywords": ["AA", "Aa", "aa"]},
+        {"label": "表达为频率或比例", "points": 2, "keywords": ["频率", "比例"]}
+      ],
+      "explanation": "基因型频率描述个体基因型组合的比例，等位基因频率描述群体中某个等位基因的比例。"
+    },
+    {
+      "id": "q_final_short_001",
+      "question_type": "short_answer",
+      "module": "综合复习",
+      "topic": "方法选择",
+      "difficulty": "hard",
+      "scope": "teacher",
+      "use_cases": ["final"],
+      "points": 15,
+      "prompt": "某研究同时包含连续型结局、二分类结局、治疗前后重复测量和多个基因检验。请给出统计分析方案，并说明每一步选择方法的理由。",
+      "answer_keywords": ["连续型", "二分类", "配对", "Logistic", "多重检验", "FDR"],
+      "rubric": [
+        {"label": "能按变量类型选择模型或检验", "points": 5, "keywords": ["连续型", "二分类", "Logistic"]},
+        {"label": "识别前后重复测量或配对设计", "points": 3, "keywords": ["配对", "前后", "重复测量"]},
+        {"label": "说明多个基因检验需要校正", "points": 4, "keywords": ["多重检验", "FDR", "校正"]},
+        {"label": "包含结果解释和局限性", "points": 3, "keywords": ["解释", "置信区间", "局限"]}
+      ],
+      "explanation": "综合题考查变量类型、设计结构、多重检验和结果解释。"
+    }
+  ],
+  "quiz_sets": [
+    {
+      "id": "lesson_fdr",
+      "title": "多重检验校正课后小测",
+      "module": "多重检验校正",
+      "use_case": "lesson",
+      "audience": "teacher",
+      "question_ids": ["q_fdr_mc_001", "q_fdr_short_001"],
+      "description": "上完多重检验校正后使用，题量少，重点检查 FDR/FWER 和调整后 p 值。"
+    },
+    {
+      "id": "lesson_logistic",
+      "title": "Logistic 回归课后小测",
+      "module": "Logistic 回归",
+      "use_case": "lesson",
+      "audience": "teacher",
+      "question_ids": ["q_logistic_mc_001", "q_logistic_short_001"],
+      "description": "上完 Logistic 回归后使用，重点检查 OR 和置信区间解释。"
+    },
+    {
+      "id": "midterm_biostat",
+      "title": "生物统计学期中测验",
+      "module": "阶段综合",
+      "use_case": "midterm",
+      "audience": "teacher",
+      "question_ids": ["q_fdr_mc_001", "q_fdr_calc_001", "q_design_mc_001", "q_logistic_mc_001"],
+      "description": "期中使用的短测版本，题量控制在少量关键题。"
+    },
+    {
+      "id": "final_biostat",
+      "title": "生物统计学期末综合测验",
+      "module": "综合复习",
+      "use_case": "final",
+      "audience": "teacher",
+      "question_ids": ["q_fdr_short_001", "q_design_short_001", "q_logistic_short_001", "q_chisq_mc_001", "q_final_short_001"],
+      "description": "期末综合题组，覆盖方法选择、结果解释和多重检验。"
+    }
+  ]
+}

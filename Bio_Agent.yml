@@ -1,0 +1,609 @@
+app:
+  description: 第一个实验的
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: Bio_Agent_1
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.17@f7a5c1d222d17ee419b17a80d6e4923838fe93788dc724a3af73fbc6990b3a32
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1780379192862-source-1780392690683-target
+      selected: false
+      source: '1780379192862'
+      sourceHandle: source
+      target: '1780392690683'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1780392690683-source-1780375001022-target
+      selected: false
+      source: '1780392690683'
+      sourceHandle: source
+      target: '1780375001022'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1780374604621-source-1780395197021-target
+      selected: false
+      source: '1780374604621'
+      sourceHandle: source
+      target: '1780395197021'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1780395197021-1780395216937-1780379192862-target
+      selected: false
+      source: '1780395197021'
+      sourceHandle: '1780395216937'
+      target: '1780379192862'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1780395197021-1-1780461082965-target
+      selected: false
+      source: '1780395197021'
+      sourceHandle: '1'
+      target: '1780461082965'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1780461082965-source-1780461108277-target
+      source: '1780461082965'
+      sourceHandle: source
+      target: '1780461108277'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1780395197021-2-1780461128499-target
+      selected: false
+      source: '1780395197021'
+      sourceHandle: '2'
+      target: '1780461128499'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1780461128499-source-1780461138261-target
+      source: '1780461128499'
+      sourceHandle: source
+      target: '1780461138261'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1780461138261-source-1780461288525-target
+      source: '1780461138261'
+      sourceHandle: source
+      target: '1780461288525'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1780461108277-source-1780461291227-target
+      source: '1780461108277'
+      sourceHandle: source
+      target: '1780461291227'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - default: '2'
+          hint: ''
+          label: ques
+          max_length: 100
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: ques
+      height: 109
+      id: '1780374604621'
+      position:
+        x: 20.05126997378281
+        y: 271.79987637202305
+      positionAbsolute:
+        x: 20.05126997378281
+        y: 271.79987637202305
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1780392690683'
+          - text
+          value_type: string
+          variable: text
+        selected: false
+        title: 输出
+        type: end
+      height: 88
+      id: '1780375001022'
+      position:
+        x: 1645.584010303142
+        y: 708.4235606545237
+      positionAbsolute:
+        x: 1645.584010303142
+        y: 708.4235606545237
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - FtOvEkNXCtDk/vepl7gkuMEzr7LbBsOQqdPmltpoon0gDrDvDPGqn8TE1PLVEdaR
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          score_threshold: 0.8
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1780374604621'
+        - ques
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 2
+        type: knowledge-retrieval
+      height: 90
+      id: '1780379192862'
+      position:
+        x: 966.3342013531447
+        y: 708.4235606545237
+      positionAbsolute:
+        x: 966.3342013531447
+        y: 708.4235606545237
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1780379192862'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 711e08be-aa0c-4f6a-af1a-e75ee5587dcf
+          role: system
+          text: '# 角色：耐心的生物统计学助教
+
+            # 知识参考：
+
+            【标准定义】: {{#authority_dataset#}}
+
+
+            # 任务：
+
+            依据数据库检索到的中文教材/课本内容，解答学生的问题：{{#sys.query#}}。
+
+
+            # 知识使用要求：
+
+            1. 优先使用数据库中的中文教材/课本内容，尤其是教材知识点、定义、公式、例题和例题解法。
+
+            2. 如果教材/数据库内容与模型常识不一致，以教材/数据库为准；不要编造教材外材料。
+
+            3. 不得写出具体教材书名、作者或章节号，除非检索内容明确提供这些信息；没有证据时只写“教材例题改编”。
+
+            4. 解答时围绕上面的教材知识点展开，不使用比喻、拟人化、故事化类比或口语化表达。
+
+
+            # 用户输入处理：
+
+            1. 用户输入可能很简洁或口语化，例如“给我解释一下 OR 机制”“FDR 是什么意思”“我想问其中的 p 值是调整后 p 值吗”。请主动识别核心知识点并回答。
+
+            2. 如果信息不足，先按教材中的常见定义和典型场景回答，再说明需要哪些条件才能做更精确判断。
+
+            3. 不要输出寒暄、承诺或过程说明，例如“好的，同学”“下面我来解释”；直接进入知识点回答。
+
+
+            # 教学原则：
+
+            1. 态度要温和、鼓励、具有引导性。
+
+            2. 遇到数学公式、统计符号、阈值和不等式，必须使用标准 LaTeX 渲染（行内 $...$，展示公式 $$...$$），例如 $p < 0.05$、$\alpha = 0.05$、$\chi^2$、$OR = 2.4$，不要裸写 χ²、α=0.05、p<0.05，也不要用代码块展示公式。
+
+            3. 如果涉及复杂的计算方法（如卡方检验步骤），请使用“分步拆解（Step-by-step）”的方式，先讲适用条件，再讲公式/步骤，再用教材例题改编的数值例子，不要直接给出一个抽象的结论。
+
+            4. 必须给一个正确例子和一个反例/易错例，并说明为什么正确/错误。
+
+            5. 在回答的最后，提出一个由中文教材例题改编的“思考题”引导学生深入思考。'
+        - id: 8a0951de-804f-4554-9db3-bc8823c7abeb
+          role: user
+          text: '{{#1780374604621.ques#}}'
+        reasoning_format: separated
+        selected: false
+        structured_output_enabled: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1780392690683'
+      position:
+        x: 1303.87217415098
+        y: 708.4235606545237
+      positionAbsolute:
+        x: 1303.87217415098
+        y: 708.4235606545237
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        classes:
+        - id: '1'
+          label: CLASS 1
+          name: PPT制作
+        - id: '2'
+          label: CLASS 2
+          name: 考卷制作
+        - id: '1780395216937'
+          label: CLASS 3
+          name: 学生答疑
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        query_variable_selector:
+        - '1780374604621'
+        - ques
+        selected: false
+        title: 问题分类器
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 220
+      id: '1780395197021'
+      position:
+        x: 507.3244612415317
+        y: 292.79987637202305
+      positionAbsolute:
+        x: 507.3244612415317
+        y: 292.79987637202305
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - FtOvEkNXCtDk/vepl7gkuMEzr7LbBsOQqdPmltpoon0gDrDvDPGqn8TE1PLVEdaR
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector: []
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 2
+        type: knowledge-retrieval
+      height: 90
+      id: '1780461082965'
+      position:
+        x: 941.1688771080335
+        y: 235.97231119636615
+      positionAbsolute:
+        x: 941.1688771080335
+        y: 235.97231119636615
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: a760f2f0-84b7-4417-9064-22f6871c379b
+          role: system
+          text: '# 角色：生物统计学教授及课件设计专家
+
+            # 上下文知识：
+
+            【权威定义】: {{#authority_dataset#}}
+
+            【前沿进展】: {{#frontier_dataset#}}
+
+
+            # 任务：
+
+            根据用户的要求：{{#sys.query#}}，依据数据库检索到的中文教材/课本内容，制作一份完整教学 PPT 课件内容，而不是只给大纲。
+
+
+            # 知识使用要求：
+
+            1. 优先使用数据库中的中文教材/课本知识点、定义、公式、例题和例题解法。
+
+            2. 如果教材/数据库内容与模型常识不一致，以教材/数据库为准；不要编造教材外材料。
+
+            3. 不得写出具体教材书名、作者或章节号，除非检索内容明确提供这些信息；没有证据时只写“中文教材典型例题改编”。
+
+            4. 课件例题和课堂练习必须改编自中文教材例题或教材典型题型，可更换数据、情境和问法，但不要照抄原题。
+
+            5. 不使用比喻、拟人化或故事化类比；表述要清晰、分步、可直接授课。
+
+            6. 用户可能只输入“做个 OR 课件”“卡方检验 PPT”“讲一下 FDR”。请主动识别主题，生成完整 PPT 课件，不要求用户写完整提示词。
+
+            7. 不要输出寒暄、承诺或过程说明，例如“好的，老师”“下面是课件”；文件内容必须从 Marp frontmatter 或第一张幻灯片直接开始。
+
+
+            # 格式要求：
+
+            请使用标准的 Marp Markdown 格式输出完整 PPT 幻灯片内容（使用 --- 分页，使用 #、## 表示标题结构，可直接导出为 PPT/PDF）。所有公式、统计符号、阈值和不等式必须使用标准 LaTeX（行内 $...$，展示公式 $$...$$），不要用代码块展示公式。
+
+            必须包含以下板块：
+
+            1. 基础概念引入（基于教材/权威知识）
+
+            2. 核心公式与统计学推导
+
+            3. 教材例题改编的正例和反例/易错例
+
+            4. 临床或生物学应用案例
+
+            5. 前沿研究拓展（结合前沿进展知识，说明该技术在现代科研中的最新应用）'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1780461108277'
+      position:
+        x: 1449.5245359179455
+        y: 129.0196831546436
+      positionAbsolute:
+        x: 1449.5245359179455
+        y: 129.0196831546436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - FtOvEkNXCtDk/vepl7gkuMEzr7LbBsOQqdPmltpoon0gDrDvDPGqn8TE1PLVEdaR
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          top_k: 4
+        query_attachment_selector: []
+        query_variable_selector: []
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 3
+        type: knowledge-retrieval
+      height: 90
+      id: '1780461128499'
+      position:
+        x: 941.1688771080335
+        y: 417.1626457611668
+      positionAbsolute:
+        x: 941.1688771080335
+        y: 417.1626457611668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-v4-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 7476a73c-b971-4b60-9c76-403138809eb3
+          role: system
+          text: "# 角色：生物统计学资深出题专家\n# 知识参考：\n【教学大纲与标准考点】: {{#authority_dataset#}}\n\
+            \n# 任务：\n根据用户的要求：{{#sys.query#}}，依据数据库检索到的中文教材/课本内容，设计一份专业、严谨的测验卷。\n\
+            \n# 知识使用要求：\n1. 优先使用数据库中的中文教材/课本知识点、定义、公式、例题和例题解法。\n2. 如果教材/数据库内容与模型常识不一致，以教材/数据库为准；不要编造教材外材料。\n\
+            3. 不得写出具体教材书名、作者或章节号，除非检索内容明确提供这些信息；没有证据时只写“中文教材典型例题改编”。\n4. 试题必须改编自中文教材例题或教材典型题型，可更换数据、情境和问法，但不要照抄原题。\n5. 不使用比喻、拟人化或故事化类比；题干、解析和答案要清晰、分步、可检查。\n\
+            \n# 用户输入处理：\n1. 用户可能只输入“出一套卡方检验考卷”“t检验测验”“方差分析题”。请主动识别主题并生成完整考卷。\n2. 如果未指定分值或题量，按一份课堂测验卷组织，包含题目、分值、考查点和参考答案。\n3. 不要输出寒暄、承诺或过程说明，例如“好的，老师”“根据您的要求”；文件内容必须从试卷标题或题目正文直接开始。\n\
+            \n# 格式与技术要求：\n1. 必须使用标准的 LaTeX 语法书写所有统计学公式、统计符号、阈值和不等式（如 $p < 0.05$、$\\alpha = 0.05$、$\\chi^2$、$OR = 2.4$ 或 $$...$$），不要裸写 χ²、α=0.05、p<0.05，也不要用代码块展示公式。\n2. 结构应包含：\n\
+               - 单选题（附带选项 A, B, C, D）\n   - 计算分析题（给出具体的样本数据，如样本量 n，均值，标准差，要求进行统计推断）\n\
+            3. 必须设置“正例/反例或易错辨析”题，用于考查学生是否能识别正确应用与错误应用。\n4. 请在试卷的最后部分，附带详细的【参考答案与解析】，特别是计算题，必须写明自由度计算、临界值查表和假设检验结论步骤。\n5. 对易错知识点给出一个正确例子和一个反例/易错例，并说明区分点。"
+        selected: false
+        title: LLM 3
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1780461138261'
+      position:
+        x: 1454.5576007669677
+        y: 417.1626457611668
+      positionAbsolute:
+        x: 1454.5576007669677
+        y: 417.1626457611668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1780461138261'
+          - text
+          value_type: string
+          variable: text
+        selected: false
+        title: 输出 2
+        type: end
+      height: 88
+      id: '1780461288525'
+      position:
+        x: 1756.5576007669677
+        y: 417.1626457611668
+      positionAbsolute:
+        x: 1756.5576007669677
+        y: 417.1626457611668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1780461108277'
+          - text
+          value_type: string
+          variable: text
+        selected: false
+        title: 输出 3
+        type: end
+      height: 88
+      id: '1780461291227'
+      position:
+        x: 1751.5245359179455
+        y: 129.0196831546436
+      positionAbsolute:
+        x: 1751.5245359179455
+        y: 129.0196831546436
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 37.61984579956379
+      y: 99.31697830505999
+      zoom: 0.7947443794166629
+  rag_pipeline_variables: []

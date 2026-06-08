@@ -1,0 +1,33 @@
+{
+  "course_name": "生物统计学",
+  "class_name": "30人小课模拟班",
+  "class_size": 30,
+  "weak_points": [
+    {
+      "name": "多重检验校正",
+      "mastery": 0.4,
+      "priority": "high",
+      "common_errors": [
+        "混淆 FDR 和 FWER",
+        "忽略调整后 p 值"
+      ]
+    },
+    {
+      "name": "Logistic 回归结果解释",
+      "mastery": 0.55,
+      "priority": "medium",
+      "common_errors": [
+        "把 OR 当概率",
+        "忽略置信区间"
+      ]
+    }
+  ],
+  "strong_points": [
+    "描述性统计",
+    "假设检验基本流程"
+  ],
+  "teacher_notes": [
+    "小课适合增加课堂追问、个别点名讲解和小组板演。",
+    "需要增加真实数据解释。"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "student_demo": {
+    "student_id": "student_demo",
+    "name": "学生样例",
+    "weak_points": [
+      {
+        "name": "Logistic 回归结果解释",
+        "mastery": 0.48,
+        "recent_errors": [
+          "把比值比解释成概率差",
+          "忽略置信区间"
+        ]
+      },
+      {
+        "name": "多重检验校正",
+        "mastery": 0.42,
+        "recent_errors": [
+          "混淆 FDR 和 FWER",
+          "只看原始 p 值"
+        ]
+      }
+    ],
+    "strong_points": [
+      "描述性统计",
+      "正态分布"
+    ]
+  },
+  "student_or": {
+    "student_id": "student_or",
+    "name": "王同学",
+    "weak_points": [
+      {
+        "name": "Logistic 回归结果解释",
+        "mastery": 0.36,
+        "recent_errors": [
+          "把 OR 当作概率",
+          "不能解释 OR 的置信区间"
+        ]
+      },
+      {
+        "name": "混杂因素调整",
+        "mastery": 0.44,
+        "recent_errors": [
+          "忽略调整变量",
+          "只比较单因素结果"
+        ]
+      }
+    ],
+    "strong_points": [
+      "描述性统计",
+      "二分类结局识别"
+    ]
+  },
+  "student_fdr": {
+    "student_id": "student_fdr",
+    "name": "李同学",
+    "weak_points": [
+      {
+        "name": "多重检验校正",
+        "mastery": 0.31,
+        "recent_errors": [
+          "混淆 FWER 和 FDR",
+          "不理解调整后 p 值"
+        ]
+      },
+      {
+        "name": "基因组数据结果解释",
+        "mastery": 0.39,
+        "recent_errors": [
+          "把单个显著基因推广为全局结论",
+          "忽略假阳性控制"
+        ]
+      }
+    ],
+    "strong_points": [
+      "假设检验基本流程",
+      "p 值基本含义"
+    ]
+  }
+}

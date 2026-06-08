@@ -1,0 +1,43 @@
+{
+  "course_name": "生物统计学",
+  "class_name": "200人大课模拟班",
+  "class_size": 200,
+  "weak_points": [
+    {
+      "name": "基因组数据中的多重检验校正",
+      "mastery": 0.35,
+      "priority": "high",
+      "common_errors": [
+        "把单个 p 值显著误认为全局结论可靠",
+        "混淆 FWER 和 FDR",
+        "不能解释调整后 p 值"
+      ]
+    },
+    {
+      "name": "配对设计与独立样本设计的区分",
+      "mastery": 0.5,
+      "priority": "high",
+      "common_errors": [
+        "忽略同一受试者前后测量的相关性",
+        "直接套用独立样本 t 检验"
+      ]
+    },
+    {
+      "name": "Logistic 回归结果解释",
+      "mastery": 0.52,
+      "priority": "medium",
+      "common_errors": [
+        "把 OR 当概率",
+        "只看显著性不看效应大小"
+      ]
+    }
+  ],
+  "strong_points": [
+    "描述性统计",
+    "正态分布基本概念"
+  ],
+  "teacher_notes": [
+    "大课适合分层讲解、自动化小测和助教分组反馈。",
+    "需要用在线测验快速定位共性薄弱点。"
+  ]
+}

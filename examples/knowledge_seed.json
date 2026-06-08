@@ -1,0 +1,74 @@
+[
+  {
+    "title": "中国大学 MOOC：生物统计学",
+    "source_type": "course",
+    "language": "zh",
+    "topics": ["假设检验", "参数估计", "卡方检验", "方差分析", "回归分析", "试验设计"],
+    "url": "https://www.icourse163.org/course/detail.htm?cid=1452086221",
+    "authors": "中国大学 MOOC",
+    "year": "",
+    "summary": "中文生物统计学课程资源，可作为基础知识库章节结构参考。",
+    "content": "适合覆盖生物统计学基础概念、常用统计检验、回归与试验设计。",
+    "tags": ["中文", "课程", "基础"]
+  },
+  {
+    "title": "中国大学 MOOC：南京农业大学生物统计学",
+    "source_type": "course",
+    "language": "zh",
+    "topics": ["生物实验设计", "方差分析", "回归分析"],
+    "url": "https://www.icourse163.org/course/detail.htm?cid=1001754031",
+    "authors": "南京农业大学",
+    "year": "",
+    "summary": "适合补充农业、生物实验设计相关案例。",
+    "content": "可作为实验设计、农业和生物学场景例题的资料入口。",
+    "tags": ["中文", "课程", "实验设计"]
+  },
+  {
+    "title": "OpenIntro: Introductory Statistics for the Life and Biomedical Sciences",
+    "source_type": "textbook",
+    "language": "en",
+    "topics": ["descriptive statistics", "inference", "regression", "R labs"],
+    "url": "https://www.openintro.org/book/biostat/",
+    "authors": "OpenIntro",
+    "year": "",
+    "summary": "面向生命科学和生物医学的开放统计教材，提供 PDF、练习和教师资源。",
+    "content": "适合作为英文基础教材主干，章节清晰，配套练习和 R lab 便于生成课件与练习。",
+    "tags": ["英文", "开放教材", "基础", "R"]
+  },
+  {
+    "title": "Handbook of Biological Statistics",
+    "source_type": "textbook",
+    "language": "en",
+    "topics": ["test selection", "biological statistics", "hypothesis testing"],
+    "url": "https://www.biostathandbook.com/",
+    "authors": "John H. McDonald",
+    "year": "",
+    "summary": "生物统计方法选择和解释的实用手册。",
+    "content": "适合做方法选择知识库，尤其适合学生理解不同统计检验的适用场景。",
+    "tags": ["英文", "开放教材", "方法选择"]
+  },
+  {
+    "title": "Modern Statistics for Modern Biology",
+    "source_type": "textbook",
+    "language": "en",
+    "topics": ["high-throughput biology", "multivariate analysis", "clustering", "experimental design"],
+    "url": "https://web.stanford.edu/class/bios221/book/",
+    "authors": "Susan Holmes, Wolfgang Huber",
+    "year": "",
+    "summary": "现代生物学统计建模教材，适合进阶和基因组数据模块。",
+    "content": "适合扩展高通量实验、聚类、多变量统计、现代生物数据分析。",
+    "tags": ["英文", "开放教材", "进阶", "基因组"]
+  },
+  {
+    "title": "Orchestrating Single-Cell Analysis with Bioconductor",
+    "source_type": "book",
+    "language": "en",
+    "topics": ["single-cell RNA-seq", "Bioconductor", "quality control", "clustering"],
+    "url": "https://bioconductor.org/books/release/OSCA/",
+    "authors": "Bioconductor",
+    "year": "",
+    "summary": "单细胞分析在线书，适合后续扩展前沿知识库。",
+    "content": "可用于单细胞 RNA-seq 数据分析流程、质控、降维、聚类和注释等模块。",
+    "tags": ["英文", "前沿", "单细胞", "Bioconductor"]
+  }
+]
