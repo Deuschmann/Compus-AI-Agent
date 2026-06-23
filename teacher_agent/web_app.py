@@ -36,6 +36,7 @@ from teacher_agent.yml_llm_client import is_yml_llm_configured
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8765
 PROFILE_PATH = Path("examples/class_profile.json")
+CODE_RUN_TIMEOUT_SECONDS = 30
 
 
 class ReusableThreadingHTTPServer(ThreadingHTTPServer):
@@ -503,7 +504,7 @@ def _run_temp_script(
                 cwd=temp_dir,
                 capture_output=True,
                 text=True,
-                timeout=5,
+                timeout=CODE_RUN_TIMEOUT_SECONDS,
             )
         except subprocess.TimeoutExpired as exc:
             return {
@@ -511,7 +512,7 @@ def _run_temp_script(
                 "ok": False,
                 "exit_code": None,
                 "stdout": _clean_snippet(exc.stdout or "", max_length=2000),
-                "stderr": "运行超时：代码超过 5 秒仍未结束。",
+                "stderr": f"运行超时：代码超过 {CODE_RUN_TIMEOUT_SECONDS} 秒仍未结束。",
                 "timed_out": True,
             }
     return {
@@ -530,10 +531,10 @@ def _python_fixture(question_id: str) -> str:
 try:
     import pandas as pd
     df = pd.DataFrame({
-        "y": [0, 1, 0, 1, 1, 0],
-        "age": [23, 45, 31, 52, 47, 28],
-        "sex": [0, 1, 1, 0, 1, 0],
-        "exposure": [0, 1, 0, 1, 1, 0],
+        "y": [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+        "age": [23, 45, 31, 52, 47, 28, 36, 59, 41, 33, 50, 39],
+        "sex": [0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0],
+        "exposure": [0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0],
     })
     y = df["y"]
 except Exception as fixture_error:
@@ -546,10 +547,10 @@ def _r_fixture(question_id: str) -> str:
     if question_id == "q_logistic_code_r_001":
         return """\
 df <- data.frame(
-  y = c(0, 1, 0, 1, 1, 0),
-  age = c(23, 45, 31, 52, 47, 28),
-  sex = c(0, 1, 1, 0, 1, 0),
-  exposure = c(0, 1, 0, 1, 1, 0)
+  y = c(0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0),
+  age = c(23, 45, 31, 52, 47, 28, 36, 59, 41, 33, 50, 39),
+  sex = c(0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0),
+  exposure = c(0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0)
 )
 """
     return ""

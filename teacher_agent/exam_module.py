@@ -8,6 +8,9 @@ from pathlib import Path
 from teacher_agent.schemas import ClassProfile, OutputBundle, ensure_output_dir, slugify
 
 
+LATEX_COMPILE_TIMEOUT_SECONDS = 45
+
+
 @dataclass
 class ExamRequest:
     title: str
@@ -228,8 +231,14 @@ def _compile_latex(tex_path: Path) -> Path | None:
         str(tex_path),
     ]
     try:
-        subprocess.run(command, check=True, capture_output=True, text=True)
-    except subprocess.CalledProcessError:
+        subprocess.run(
+            command,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=LATEX_COMPILE_TIMEOUT_SECONDS,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         return None
     return tex_path.with_suffix(".pdf")
 
@@ -242,8 +251,14 @@ def _compile_with_tectonic(tex_path: Path, compiler: str) -> Path | None:
         str(tex_path),
     ]
     try:
-        subprocess.run(command, check=True, capture_output=True, text=True)
-    except subprocess.CalledProcessError:
+        subprocess.run(
+            command,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=LATEX_COMPILE_TIMEOUT_SECONDS,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
         return None
     return tex_path.with_suffix(".pdf")
 
