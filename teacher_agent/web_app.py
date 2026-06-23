@@ -2362,7 +2362,7 @@ INDEX_HTML = r"""
     }
     .sidebar {
       border-right: 1px solid #dfe4ea;
-      background: #ffffff;
+      background: #fbfcfe;
       display: flex;
       flex-direction: column;
       min-width: 0;
@@ -2385,7 +2385,7 @@ INDEX_HTML = r"""
     }
     .brand {
       font-weight: 700;
-      font-size: 16px;
+      font-size: 18px;
       flex: 1;
     }
     .subtitle {
@@ -2469,11 +2469,66 @@ INDEX_HTML = r"""
     }
     .identity-panel {
       display: grid;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid #dfe7f1;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(31, 54, 88, 0.06);
+    }
+    .login-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 8px;
+    }
+    .login-title strong {
+      font-size: 14px;
+    }
+    .login-title span {
+      color: #667085;
+      font-size: 12px;
+    }
+    .role-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .role-card {
+      height: auto;
+      min-height: 74px;
       padding: 10px;
-      border: 1px solid #edf0f3;
+      text-align: left;
       border-radius: 8px;
       background: #f8fafc;
+      border-color: #d7dee8;
+    }
+    .role-card:hover {
+      background: #f2f7ff;
+      border-color: #9bc4ff;
+    }
+    .role-card.active {
+      background: #eaf2ff;
+      border-color: #1f6feb;
+      box-shadow: 0 0 0 3px #1f6feb1f;
+    }
+    .role-card-title {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+    .role-card-desc {
+      display: block;
+      color: #667085;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .role-select-native {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
     }
     .field {
       display: grid;
@@ -2486,13 +2541,22 @@ INDEX_HTML = r"""
     }
     .field-row {
       display: grid;
-      grid-template-columns: 92px minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr);
       gap: 8px;
     }
     .session-actions {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 8px;
+    }
+    .permission-note {
+      border: 1px solid #dfe7f1;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 9px 10px;
+      color: #4b5563;
+      font-size: 12px;
+      line-height: 1.45;
     }
     .sessions {
       flex: 1 1 auto;
@@ -2816,8 +2880,22 @@ INDEX_HTML = r"""
           </div>
         </div>
         <div class="identity-panel">
+          <div class="login-title">
+            <strong>选择身份</strong>
+            <span>权限随角色切换</span>
+          </div>
+          <div class="role-cards" aria-label="角色选择">
+            <button class="role-card active" type="button" data-role="teacher">
+              <span class="role-card-title">老师</span>
+              <span class="role-card-desc">课件、试卷、知识库和班级分析</span>
+            </button>
+            <button class="role-card" type="button" data-role="student">
+              <span class="role-card-title">学生</span>
+              <span class="role-card-desc">答疑、练习、自测和薄弱点反馈</span>
+            </button>
+          </div>
           <div class="field-row">
-            <div class="field">
+            <div class="field role-select-native">
               <label for="roleSelect">角色</label>
               <select id="roleSelect" aria-label="角色">
                 <option value="teacher">老师</option>
@@ -2833,6 +2911,7 @@ INDEX_HTML = r"""
             <label for="sessionTitleInput">会话名称</label>
             <input id="sessionTitleInput" type="text" placeholder="例如：小课课后辅导" />
           </div>
+          <div id="permissionNote" class="permission-note"></div>
           <div class="session-actions">
             <button id="newSession" class="primary">新建会话</button>
             <button id="resetComposer" type="button">清空</button>
@@ -2878,6 +2957,8 @@ INDEX_HTML = r"""
     const userSelectEl = document.getElementById("userSelect");
     const sessionTitleInputEl = document.getElementById("sessionTitleInput");
     const renameInputEl = document.getElementById("renameInput");
+    const permissionNoteEl = document.getElementById("permissionNote");
+    const roleCardEls = [...document.querySelectorAll(".role-card")];
 
     const userOptions = {
       teacher: [
@@ -2889,6 +2970,10 @@ INDEX_HTML = r"""
         { id: "student_or", label: "student_or · OR 薄弱" },
         { id: "student_fdr", label: "student_fdr · FDR 薄弱" },
       ],
+    };
+    const permissionCopy = {
+      teacher: "老师权限：可以生成 PPTX 课件、LaTeX/PDF 预览、正式试卷、课后小测，查阅知识库和班级画像。",
+      student: "学生权限：可以答疑、刷题和查看个人薄弱点；不能生成或下载老师正式试卷。",
     };
 
     async function api(path, options = {}) {
@@ -3043,10 +3128,18 @@ INDEX_HTML = r"""
 
     roleSelectEl.onchange = () => {
       updateUserOptions();
+      updateRoleCards();
       sessionTitleInputEl.placeholder = roleSelectEl.value === "student"
         ? "例如：student_or 课后练习"
         : "例如：30人小课学情分析";
     };
+
+    roleCardEls.forEach(card => {
+      card.onclick = () => {
+        roleSelectEl.value = card.dataset.role || "teacher";
+        roleSelectEl.onchange();
+      };
+    });
 
     function updateUserOptions() {
       const role = roleSelectEl.value || "teacher";
@@ -3061,6 +3154,15 @@ INDEX_HTML = r"""
       if ([...userSelectEl.options].some(option => option.value === current)) {
         userSelectEl.value = current;
       }
+      permissionNoteEl.textContent = permissionCopy[role] || permissionCopy.teacher;
+      updateRoleCards();
+    }
+
+    function updateRoleCards() {
+      const role = roleSelectEl.value || "teacher";
+      roleCardEls.forEach(card => {
+        card.classList.toggle("active", card.dataset.role === role);
+      });
     }
 
     function defaultUserId(role) {

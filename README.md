@@ -15,6 +15,8 @@
 ├── AI_Agent.yml                    # 老师/学生主 Chatflow 配置
 ├── Bio_Agent.yml                   # 生物统计学问答/出题工作流配置
 ├── AI_Agent.py                     # 调用 Dify Workflow API 的独立脚本
+├── assets/ppt_images/              # 课件图片资产库和来源 manifest
+├── templates/beamer/format.tex     # LaTeX Beamer 课件格式模板
 ├── teacher_agent/                  # 老师端/学生端核心应用代码
 ├── examples/                       # 班级画像、学生画像、题库、知识库种子数据
 ├── resources/                      # 知识库文本资源
@@ -51,7 +53,7 @@ teacher -> power = 1
 
 `teacher_agent/ppt_module.py`
 
-课件生成模块。根据课程主题、班级画像、学习目标生成 Markdown 课件大纲；如果安装了 `python-pptx`，会进一步导出 `.pptx`。
+课件生成模块。根据课程主题、班级画像、学习目标生成 LaTeX Beamer 源文件、PDF 预览和最终 `.pptx` 课件；会按章节自动匹配本地图片资产。
 
 `teacher_agent/exam_module.py`
 
@@ -80,6 +82,16 @@ teacher -> power = 1
 `teacher_agent/cli.py`
 
 命令行入口。可用于生成课件、生成试卷、维护知识库、初始化题库、抽题和提交评分。
+
+## 课件图片资产库
+
+课件生成会按主题自动选择 `assets/ppt_images/manifest.json` 中登记的图片资产：
+
+- `logistic_curve`：用于 Logistic 回归、二分类结局建模、S 型概率曲线。
+- `benjamini_hochberg`：用于多重检验校正、FDR、BH procedure。
+- `dna_double_helix`：用于基因组数据、生物医学统计应用和高通量检测背景。
+
+图片优先来自 Wikimedia Commons 等可追踪来源，并在 manifest 中保留来源链接和用途说明。
 
 ## YML 与接口代码
 

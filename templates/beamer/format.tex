@@ -1,0 +1,62 @@
+\usetheme{Madrid}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{hyperref}
+
+\setmainfont{Helvetica Neue}
+\setsansfont{Helvetica Neue}
+\setmonofont{Menlo}
+\setCJKmainfont{Songti SC}
+\setCJKsansfont{Songti SC}
+\setCJKmonofont{Kaiti SC}
+
+\definecolor{AgentInk}{HTML}{17202A}
+\definecolor{AgentBlue}{HTML}{1F6FEB}
+\definecolor{AgentTeal}{HTML}{0E7C86}
+\definecolor{AgentGreen}{HTML}{2E7D32}
+\definecolor{AgentSand}{HTML}{F5F7FA}
+\definecolor{AgentLine}{HTML}{D8DEE9}
+
+\setbeamercolor{normal text}{fg=AgentInk,bg=white}
+\setbeamercolor{structure}{fg=AgentBlue}
+\setbeamercolor{frametitle}{fg=AgentInk,bg=AgentSand}
+\setbeamercolor{title}{fg=white,bg=AgentBlue}
+\setbeamercolor{block title}{fg=white,bg=AgentTeal}
+\setbeamercolor{block body}{fg=AgentInk,bg=AgentSand}
+\setbeamercolor{alerted text}{fg=AgentGreen}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{AgentBlue}\small$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{AgentTeal}\scriptsize$\bullet$}
+
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.72\paperwidth,ht=2.6ex,dp=1ex,leftskip=1.2em]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.28\paperwidth,ht=2.6ex,dp=1ex,rightskip=1.2em plus1fil]{date in head/foot}%
+      \hfill\insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}
+
+\newcommand{\AgentKicker}[1]{%
+  {\color{AgentTeal}\scriptsize\bfseries #1}\par\vspace{0.25em}
+}
+
+\newcommand{\AgentImageCredit}[1]{%
+  \vspace{0.25em}{\tiny\color{gray}#1}
+}
+
+\newcommand{\AgentCallout}[2]{%
+  \begin{block}{#1}
+    #2
+  \end{block}
+}

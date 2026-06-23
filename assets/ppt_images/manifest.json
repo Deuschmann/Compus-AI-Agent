@@ -1,0 +1,28 @@
+{
+  "assets": {
+    "logistic_curve": {
+      "path": "assets/ppt_images/logistic/logistic_curve.png",
+      "category": "logistic",
+      "title": "Logistic curve",
+      "usage": "Logistic 回归、二分类结局建模、概率与 logit 转换",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Logistic-curve.svg",
+      "license": "Wikimedia Commons file page"
+    },
+    "benjamini_hochberg": {
+      "path": "assets/ppt_images/multiple_testing/benjamini_hochberg.png",
+      "category": "multiple_testing",
+      "title": "Benjamini-Hochberg correction",
+      "usage": "多重检验校正、FDR、p 值排序和阈值比较",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Benjamini-Hochberg-correction.png",
+      "license": "Wikimedia Commons file page"
+    },
+    "dna_double_helix": {
+      "path": "assets/ppt_images/biomedical/dna_double_helix.png",
+      "category": "biomedical",
+      "title": "DNA double helix",
+      "usage": "基因组数据、生物医学统计应用、高通量检测背景",
+      "source_url": "https://commons.wikimedia.org/wiki/File:DNA_Double_Helix.png",
+      "license": "Wikimedia Commons file page"
+    }
+  }
+}
